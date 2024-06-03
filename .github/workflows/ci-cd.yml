@@ -17,9 +17,23 @@ jobs:
     # - name: Setup Terraform
     #   uses: hashicorp/setup-terraform@v1
 
-    - name: Install Terraform
-      run: sudo apt-get update && sudo apt-get install -y gnupg software-properties-common && wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg > /dev/null &&
-      gpg --no-default-keyring --keyring /usr/share/keyrings/hashicorp-archive-keyring.gpg --fingerprint && echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list && sudo apt update -y && sudo apt-get install terraform -y
+    - name: Update And install gnupg
+      run: sudo apt-get update && sudo apt-get install -y gnupg software-properties-common 
+  
+    - name: Download Keyring
+      run: wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg > /dev/null
+
+    - name: Command gpg
+      run: gpg --no-default-keyring --keyring /usr/share/keyrings/hashicorp-archive-keyring.gpg --fingerprint
+      
+    - name: Create Source list
+      run: echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+
+    - name: Update Repo
+      run: sudo apt update -y
+
+    - name: Update Repo
+      run: sudo apt-get install terraform -y
 
     - name: Test Diretorio
       run: ls -la && pwd && sudo apt-get install tree -y && tree /home/runner/work/env_start2finish
