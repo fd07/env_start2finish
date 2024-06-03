@@ -39,7 +39,7 @@ jobs:
       run: pwd && ls -la && whereis terraform && ls -lha /usr/bin/ && sudo apt-get install tree -y && tree /home/runner/work/env_start2finish
 
     - name: Terraform Init
-      run: terraform init
+      run: /usr/bin/terraform init
       working-directory: ./terraform
 
     - name: Terraform Apply
