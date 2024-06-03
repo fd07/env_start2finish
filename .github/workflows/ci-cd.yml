@@ -36,7 +36,7 @@ jobs:
       run: sudo apt-get install terraform -y
 
     - name: Test Diretorio
-      run: ls -la && pwd && sudo apt-get install tree -y && tree /home/runner/work/env_start2finish
+      run: pwd && ls -la && whereis terraform && ls -lha /usr/bin/ && sudo apt-get install tree -y && tree /home/runner/work/env_start2finish
 
     - name: Terraform Init
       run: terraform init
