@@ -35,8 +35,8 @@ jobs:
     - name: Update Repo
       run: sudo apt-get install terraform -y
 
-    - name: Test Diretorio
-      run: pwd && ls -la && whereis terraform && ls -lha /usr/bin/ && sudo apt-get install tree -y && tree /home/runner/work/env_start2finish
+    # - name: Test Diretorio
+    #   run: pwd && ls -la && whereis terraform && ls -lha /usr/bin/ && sudo apt-get install tree -y && tree /home/runner/work/env_start2finish
 
     - name: Terraform Init
       run: /usr/bin/terraform init
