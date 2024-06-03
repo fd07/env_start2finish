@@ -17,6 +17,10 @@ jobs:
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
 
+    -name: Test Diretorio
+    run: ls -la && pwd
+
+
     - name: Terraform Init
       run: terraform init
       working-directory: ./terraform
