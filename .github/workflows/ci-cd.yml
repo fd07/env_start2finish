@@ -40,11 +40,11 @@ jobs:
 
     - name: Terraform Init
       run: /usr/bin/terraform init
-      working-directory: ./terraform
+      working-directory: /home/runner/work/env_start2finish/env_start2finish
 
     - name: Terraform Apply
       run: terraform apply -auto-approve
-      working-directory: ./terraform
+      working-directory: /home/runner/work/env_start2finish/env_start2finish
 
   deploy:
     name: Deploy Application
